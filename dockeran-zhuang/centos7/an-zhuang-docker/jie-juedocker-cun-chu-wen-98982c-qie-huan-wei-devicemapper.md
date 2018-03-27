@@ -48,7 +48,7 @@ Data file:
 Metadata file:
 ```
 
-1.6 vim /etc/lvm/profile/vg\_sxf--docker-pool-extend.profile
+1.6 vim /etc/lvm/profile/vg\_sxf--docker-pool-extend.profile
 
 ```
 activation {
@@ -62,7 +62,6 @@ CHUNK_SIZE=512K              #定义 thin pool 的 CHUNK 大小，默认 512k
 AUTO_EXTEND_POOL=yes         #定义是否自动扩容 thin pool 大小，默认为自动扩容
 POOL_AUTOEXTEND_THRESHOLD=60 #定义自动扩容的百分比，默认为当前 pool 使用 60% 时自动扩容，100 表示 disable，最小为 50 lvmthin — LVM thin provisioning
 POOL_AUTOEXTEND_PERCENT=20   #定义每次扩容的大小，默认为 20%，即当前 pool 大小为 100G，那么自动扩容 20G，扩容后大小为 120G， 100 表示 disable
-
 ```
 
 1.7 验证监控状态
@@ -73,7 +72,6 @@ POOL_AUTOEXTEND_PERCENT=20   #定义每次扩容的大小，默认为 20%，即�
   root        cl     -wi-ao---- <35.12g                                                              
   swap        cl     -wi-ao----  <3.88g                                                              
   docker-pool vg_sxf twi-a-t---  30.00g             0.06   0.12                             monitored
-
 ```
 
 
