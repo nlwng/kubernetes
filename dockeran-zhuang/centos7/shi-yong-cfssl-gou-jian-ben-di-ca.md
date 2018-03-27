@@ -244,8 +244,6 @@ vim /usr/local/src/ssl/kube-proxy-csr.json
 
 ![](/assets/cfssl_00045.png)
 
-
-
 7.分发证书
 
 将生成的证书和秘钥文件（后缀名为.pem）拷贝到所有机器的`/etc/kubernetes/ssl`目录下备用；
