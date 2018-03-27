@@ -45,8 +45,6 @@
 * server auth :表示client可以用该CA对server提供的证书进行验证;
 * client auth :表示server可以用该CA对client提供的证书进行验证;
 
-
-
 2.2 创建CA证书签名请求
 
 \#vim /usr/local/src/ssl/ca-csr.json
@@ -73,8 +71,6 @@
 * "CN": Common Name, kube-apiserver 从证书中提取该字段作为请求的用户名 \(User Name\);浏览器使用该字段验证网站是否合法;
 * "O": Organization, kube-apiserver从证书中提取该字段作为请求用户所属的组\(Group\);
 
-
-
 2.3 生成 CA 证书和私钥
 
 ```
@@ -84,6 +80,8 @@
 ![](/assets/cfssl_creat0001.png)
 
 3. 创建 kubernetes 证书
+
+3.1 创建 kubernetes 证书签名请求
 
 vim /usr/local/src/ssl/kubernetes-csr.json
 
@@ -122,10 +120,10 @@ vim /usr/local/src/ssl/kubernetes-csr.json
 * 如果hosts字段不为空,则需要制定授权证书的IP或域名列表,由于该证书后续将被etcd集群和kubernetes master集群所使用,
 * 所以上面指定了etcd集群,master集群的主机域名,kubernetes服务的服务 IP 
 * 一般是kue-apiserver指定的service-cluster-ip-range网段的第一个IP，如 10.254.0.1,kubernetes一定要加,不然后面会遇到很多坑,
-*  另外本例的LB并没有使用公网的DNS，建议使用公网的DNS
+* 另外本例的LB并没有使用公网的DNS，建议使用公网的DNS
 * 此处的IP仅为master节点的IP，复用etcd数据库地址，添加node时无需额外生成证书
 
-3.1 生成 kubernetes 证书和私钥
+3.2 生成 kubernetes 证书和私钥
 
 ```
 [root@master ssl]# cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes kubernetes-csr.json | cfssljson -bare kubernetes
@@ -134,6 +132,8 @@ vim /usr/local/src/ssl/kubernetes-csr.json
 ![](/assets/kubernet0003.png)
 
 4.创建 admin 证书
+
+4.1 创建 admin 证书签名请求
 
 vim /usr/local/src/ssl/admin-csr.json
 
@@ -228,36 +228,4 @@ vim /usr/local/src/ssl/kube-proxy-csr.json
 ```
 
 ![](/assets/cfssl_00045.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
