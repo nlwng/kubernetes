@@ -1,3 +1,18 @@
+集群部件所需证书
+
+| **CA&Key** | **etcd** | **kube-apiserver** | **kube-proxy** | **kubelet** | **kubectl** | **flanneld** |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| ca.pem | √ | √ | √ | √ | √ | √ |
+| ca-key.pem |  |  |  |  |  |  |
+| kubernetes.pem | √ | √ |  |  |  | √ |
+| kubernetes-key.pem | √ | √ |  |  |  | √ |
+| kube-proxy.pem |  |  | √ |  |  |  |
+| kube-proxy-key.pem |  |  | √ |  |  |  |
+| admin.pem |  |  |  |  | √ |  |
+| admin-key.pem |  |  |  |  | √ |  |
+
+
+
 1.安装CFSSL
 
 ```
@@ -79,7 +94,7 @@
 
 ![](/assets/cfssl_creat0001.png)
 
-3. 创建 kubernetes 证书
+1. 创建 kubernetes 证书
 
 3.1 创建 kubernetes 证书签名请求
 
@@ -228,4 +243,16 @@ vim /usr/local/src/ssl/kube-proxy-csr.json
 ```
 
 ![](/assets/cfssl_00045.png)
+
+
+
+7.分发证书
+
+将生成的证书和秘钥文件（后缀名为.pem）拷贝到所有机器的`/etc/kubernetes/ssl`目录下备用；
+
+```
+# for i in k8s-1 k8s-2 k8s-3 k8s-4 ;do scp *pem root@$i:/etc/kubernetes/ssl/ ;done
+```
+
+
 
