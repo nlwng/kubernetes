@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [First Chapter](chapter1.md)
 * [kubernetes](dockeran-zhuang.md)
-  * [kubernetes1.76集群-Centos7.4](dockeran-zhuang/centos7.md)
+  * [kubernetes集群](dockeran-zhuang/centos7.md)
     * [环境初始化](dockeran-zhuang/centos7/huan-jing-chu-shi-hua.md)
     * [安装docker](dockeran-zhuang/centos7/an-zhuang-docker.md)
       * [存储devicemapper模式](dockeran-zhuang/centos7/an-zhuang-docker/jie-juedocker-cun-chu-wen-98982c-qie-huan-wei-devicemapper.md)
