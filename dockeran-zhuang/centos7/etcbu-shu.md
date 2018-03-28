@@ -1,4 +1,4 @@
-1.下载地址
+1.下载地址--二进制文件安装
 
 ```
 #etcd
@@ -96,16 +96,6 @@ systemctl enable etcd
 systemctl status etcd
 /opt/etcd/bin/etcdctl ls
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 
